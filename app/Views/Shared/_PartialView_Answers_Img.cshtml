@@ -1,0 +1,23 @@
+﻿@model List<app.Models.Answer>
+@{
+    ViewBag.Title = "PP";
+}
+
+@foreach (var i in Model)
+{
+    <li class="answ_li col-xs-12">
+            @if (@i.Right == true)
+            {
+                <div class="qestion__btn col-xs-6" style="background:green;margin:0px;">@i.Text</div>
+            }
+            else if (@i == ViewBag.WrongAns)
+            {
+                <div class="qestion__btn col-xs-6" style="background:red;margin:0px;">@i.Text</div>
+            }
+            else
+            {
+                <div class="qestion__btn col-xs-6" style="margin:0px;">@i.Text</div>
+            }
+    </li>
+}
+

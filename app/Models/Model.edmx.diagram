@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="23c3eb2b751541b4870e54787e3996b2" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseModel1.Answer" Width="1.5" PointX="5.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.BaseInf" Width="1.5" PointX="0.625" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.Country" Width="1.5" PointX="2.875" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.Question" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.Showplace" Width="1.5" PointX="5.125" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel1.TestType" Width="1.5" PointX="0.5" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel1.FK_Answers_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel1.FK_Countries_BaseInf" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel1.FK_Showplaces_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel1.FK_Questions_TestTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<app.Models.Country>
+@{
+    ViewBag.Title = "Index";
+}
+@*<link href="~/Content/countries.css" rel="stylesheet" type="text/css" />*@
+
+
+<div class="countries-wrapper">
+
+    <!--<div class="countries_header col-xs-12">
+        <div class="countries_header__input col-sm-3">
+            <input type="text" class="form-control " placeholder="найти страну">
+        </div>
+    </div>-->
+
+    <div class="countries col-xs-12">
+
+        @foreach (app.Models.Country item in Model)
+        {
+        <div class="countries__country col-md-4 col-sm-6 col-xs-12">
+            <div class="country">
+                <a style="text-decoration:none;color:black;" href="@Url.Action("ShowCountry", "Countries", new { id = item.Id }, null)">
+                    <div class="country__img col-xs-12">
+                        <img src="~/img/@item.Img_path">
+
+                    </div>
+                    <div class="country__descr col-sm-12 col-xs-12">
+                        <h2>@item.Name</h2> <br>
+                        <h4>@item.Capital</h4> <br>
+                    </div>
+                    <div class="country__text col-sm-12 col-xs-12">
+                        @item.ShortDescription
+                    </div>
+                </a>
+            </div>
+            @*@Html.ActionLink("Узнать больше","ShowCountry","Countries", new {id = item.Id}, new { @class = "learn_more_btn"})*@
+        </div>
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/mansory")
+}

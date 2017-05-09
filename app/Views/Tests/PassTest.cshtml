@@ -1,0 +1,62 @@
+﻿@model List<app.Models.Question>
+@{
+    ViewBag.Title = "Test";
+}
+
+@*<link href="~/Content/one_test.css" rel="stylesheet" type="text/css" />*@
+
+@*@foreach (var i in Model)
+{
+    @i.Questions.Text
+
+    foreach (var a in i.Answers)
+    {
+        @a.Text
+    }
+}*@
+
+<div class="one_test-wrapper">
+
+    <div class="container">
+        <h1 class="test-wrapper__header">Тест "@ViewBag.Header"</h1>
+
+        @foreach (var i in Model)
+        {
+        <div class="question col-xs-12">
+            <h2 class="col-xs-12">@i.Text</h2>
+            <ul  id="@i.Id">
+                @foreach (var a in i.Answers)
+                {
+                <li class="answ_li col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                    @Ajax.ActionLink(@a.Text,
+                     "AjaxCheckAnswer",
+                     "Tests",
+                     new { id = @a.Id },
+                     new AjaxOptions()
+                     {
+                         UpdateTargetId = @i.Id.ToString()
+                     },
+                     new  { @class = "qestion__btn col-xs-11" }
+                     )
+                </li>
+                }
+            </ul>
+        </div>
+        }
+
+        <div class="col-xs-12 one_more_test">
+            @Html.ActionLink("Пройти ещё один тест >", "Index", "Tests", null, new { @class = "one_more_test__btn" })
+        </div>
+    </div>
+</div>
+
+
+@*<script>
+    $(".answ_li").click(function () {
+        var id = "#id";
+    })
+</script>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/ajaxjs")
+}

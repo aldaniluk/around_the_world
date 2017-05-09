@@ -1,0 +1,35 @@
+﻿@model IEnumerable<app.Models.TestType>
+@{
+    ViewBag.Title = "Tests";
+}
+@*<link href="~/Content/tests.css" rel="stylesheet" type="text/css" />*@
+
+
+<div class="test-wrapper">
+    <div class="container">
+
+
+        <div class="header col-xs-12">
+            <h2>Выберите тематику теста</h2>
+            <h6>
+                Тут Вы можете выбрать интересующую Вас тему. <br>
+                Во время прохождения теста Вы сразу можете видеть правильные и неправильные ответы. <br>
+                Приятного прохождения теста!
+            </h6>
+        </div>
+
+        <div class="types col-xs-12">
+            @foreach (var item in Model)
+            {
+                <a href="@Url.Action("PassTest", "Tests", new { id = item.Id }, null)">
+                    <div class="types__one col-lg-4 col-md-4 col-sm-12 col-xs-12">
+
+                        <p>@item.Type ></p>
+
+                        @*Html.ActionLink("пройти", "PassTest", "Tests", new { id = item.Id }, null)*@
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</div>

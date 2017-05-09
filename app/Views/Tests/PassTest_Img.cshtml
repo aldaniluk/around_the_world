@@ -1,0 +1,46 @@
+﻿@model List<app.Models.Question>
+@{
+    ViewBag.Title = "Test";
+}
+
+<div class="one_test-wrapper">
+
+    <div class="container">
+        <h1 class="test-wrapper__header">Тест "@ViewBag.Header"</h1>
+
+        @foreach (var i in Model)
+        {
+            <div class="question row-flex col-xs-12">
+                <div class="question__img col-sm-5 col-xs-12">
+                @*<div class="question__img col-md-6 col-xs-12" style="background:url(/img/maps/@i.Questions.Img_path) no-repeat center top;background-size:cover;">*@
+                    <img src="~/img/maps/@i.Img_path">
+                </div>
+                <ul id="@i.Id" class="col-sm-7 col-xs-12">
+                    @foreach (var a in i.Answers)
+                    {
+                        <li class="answ_li answ_li__img col-xs-12 col-sm-12">
+                            @Ajax.ActionLink(@a.Text,
+                                 "AjaxCheckAnswer",
+                                 "Tests",
+                                 new { id = @a.Id },
+                                 new AjaxOptions()
+                                 {
+                                     UpdateTargetId = @i.Id.ToString()
+                                 },
+                                 new { @class = "qestion__btn col-xs-6" }
+                             )
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <div class="col-xs-12 one_more_test">
+            @Html.ActionLink("Пройти ещё один тест >", "Index", "Tests", null, new { @class = "one_more_test__btn" })
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/ajaxjs")
+}

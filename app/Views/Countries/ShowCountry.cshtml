@@ -1,0 +1,57 @@
+﻿@model app.Models.Country
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<link href="~/Content/one_country.css" rel="stylesheet" type="text/css" />*@
+
+
+<div class="desc_contry-wrapper">
+
+    <div class="desc_contry__header col-xs-12" style="background: url(/img/@Model.Img_path) no-repeat center top fixed;">
+        <div class="container">
+            <div class="desc_contry__header__info col-md-5 col-sm-8 col-xs-12">
+                <h2>@Model.Name</h2>
+                <h4>@Model.Capital</h4>
+                Официальный язык - @Model.BaseInf.Languages. <br>
+                Форма правления - @Model.BaseInf.FormOfGovern. <br>
+                Основные религии - @Model.BaseInf.Religions.<br>
+                Территория - @Model.BaseInf.Territory км².<br>
+                Население - @Model.BaseInf.Population чел.<br>
+                Валюта - @Model.BaseInf.Currency.
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="desc_contry__info col-xs-12">
+            <div class="desc_contry__info__text col-md-4 col-xs-12">
+                <h2>Расположение</h2>
+                <p>@Model.Location</p>
+            </div>
+            <div class="desc_contry__info__text col-md-4 col-xs-12">
+                <h2>Основные факты</h2>
+                <p>@Model.BaseFacts</p>
+            </div>
+            <div class="desc_contry__info__text col-md-4 col-xs-12">
+                <h2>Города</h2>
+                <p>@Model.Cities</p>
+            </div>
+        </div>
+
+        <div class="desc_contry__places col-xs-12">
+
+            @foreach (var place in @Model.Showplaces)
+            {
+                <div class="places__content row-flex col-xs-12">
+                    <div class="places__content__img col-sm-6 col-xs-12" style="background:url(/img/@place.Img_path) no-repeat center top; background-size: cover">
+                    </div>
+                    <div class="places__content__text col-sm-6 col-xs-12">
+                        <h2>@place.Name</h2>
+                        @place.Description
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
